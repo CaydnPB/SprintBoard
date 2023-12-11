@@ -26,10 +26,10 @@
 <p>
   Project folders in this repository include:
   <ul>
-    <li>folder</li>
+    <li>SprintBoard</li>
       <ul>
-        <li>folder</li>
-        <li><strong>folder</strong></li>
+        <li>projectboard</li>
+        <li><strong>SprintBoard</strong></li>
       </ul>
   </ul>
 </p>

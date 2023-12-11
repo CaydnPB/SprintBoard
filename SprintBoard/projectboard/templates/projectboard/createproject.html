@@ -1,11 +1,27 @@
 {% extends "projectboard/base.html" %}
-{% block title %} Create Project: {{ projectname }} {% endblock %}
-{% block heading %} Create Project: {{ projectname }} {% endblock %}
-{% block welcome %} Welcome to SprintBoard! {% endblock %}
+{% block title %}
+    {% if projectname %}
+        Create Project: {{ projectname }}
+    {% else %}
+        Create Project
+    {% endif %}
+{% endblock %}
+{% block heading %}
+    {% if projectname %}
+        Create Project: {{ projectname }}
+    {% else %}
+        Create Project
+    {% endif %}
+{% endblock %}
+{% block welcome %} Create a Project! {% endblock %}
 {% block currentLink1 %}{% endblock %}
 {% block currentLink2 %}{% endblock %}
 {% block currentLink3 %}currentLink{% endblock %}
 {% block content %}
-    <h1>Create Project: {{ projectname }}</h1>
+    <h1>    {% if projectname %}
+        Create Project: {{ projectname }}
+    {% else %}
+        Create Project
+    {% endif %}</h1>
     <p>You are creating a new project.</p>
 {% endblock %}
