@@ -1,0 +1,24 @@
+{% extends "projectboard/base.html" %}
+{% block title %} Home {% endblock %}
+{% block heading %} SprintBoard {% endblock %}
+{% block welcome %} Welcome to SprintBoard! {% endblock %}
+{% block currentLinkTest %}{% endblock %}
+{% block content %}
+    {% if issues %}
+        <ul style="
+        padding-left: 0px;
+        ">
+            {% for issue in issues %}
+                <div class="issuecard">
+                    <h5>{{ issue.title }}</h5>
+                    <h6>{{ issue.description }}</h6>
+                    <h6>Project: {{issue.project_number}}</h6>
+                    <h6>Status: {{issue.issue_status}}</h6>
+                    <h6>Since: {{ issue.pub_date }}</h6>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No issues available.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %} - SprintBoard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .svg {
+      filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(301deg) brightness(100%) contrast(94%);
+      width: auto;
+      max-height: 100%;
+    }
+
+    body {
+      /* max-width: 1200px; */
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 25px;
+      padding-right: 25px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -ms-overflow-style: none;
+      font-family: 'Inter', system-ui, sans-serif, ui-sans-serif;
+      background-color: #f5f5f5;
+      color: #808080;
+      text-align: center;
+      background-color: #ffffff;
+      opacity: 1;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    header {
+      background-color: #F0F0F0;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      color: #808080;
+      padding: 25px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
+    }
+
+    header img {
+      border-radius: 0px;
+      height: 50px;
+    }
+
+    footer {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      background-color: #F0F0F0;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      color: #808080;
+      padding: 25px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 100%;
+    }
+
+    footer img {
+      border-radius: 0px;
+      height: 50px;
+    }
+
+    .card {
+      background-color: #F0F0F0;
+      margin: 25px auto;
+      border-radius: 25px;
+      color: #808080;
+      padding: 25px 0;
+      --bs-card-border-color: none;
+    }
+
+    .currentLink {
+      font-weight: normal;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      object-fit: cover
+    }
+
+    .imageText {
+      margin-top: 25px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 0px 25px;
+      row-gap: 25px;
+      margin-bottom: 0px;
+      column-gap: 20px;
+    }
+
+    .imageText2 {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 0px 25px;
+      row-gap: 25px;
+      margin-bottom: 0px;
+      column-gap: 20px;
+    }
+
+    .imageText img {
+      width: 200px;
+      transition: 0.2s;
+      max-width: 50%;
+    }
+
+    img:hover {
+      -webkit-transform: scale(1.05);
+      -moz-transform: scale(1.05);
+      -o-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+
+    a {
+      text-decoration: none;
+      color: #808080;
+      font-weight: bold;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    div {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    .textAside {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    .textAside p {
+      margin-top: 0px;
+    }
+
+    .textAside img {
+      width: 275px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 0px;
+    }
+
+    h4 {
+      text-align: center;
+      font-weight: normal;
+    }
+
+    html {
+      scrollbar-width: none;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div style="
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    ">
+      <a href="#"><img src="{% static 'images/home.svg' %}" alt="Image 3" class="svg"></a>
+    </div>
+    <div style="
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    ">
+      <a href="/">
+        <h1><strong>⚡️ {% block heading %}{% endblock %} ⚡️</strong></h1>
+      </a>
+      <br>
+      <h4 style="
+      margin-bottom: 0px;
+      ">{% block welcome %}{% endblock %}</h4>
+      <br>
+      <nav>
+        <a href="index.html" class="{% block currentLinkTest %}{% endblock %}">Account</a> |
+        <a href="" class="currentLink">Home</a> |
+        <a href="experience.html">Projects</a>
+      </nav>
+    </div>
+    <div style="
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    ">
+      <a href="#"><img src="{% static 'images/user.svg' %}" alt="Image 3" class="svg"></a>
+    </div>
+  </header>
+  <div class="card">
+    <h2>Interest #1</h2>
+    <div class="imageText2">
+      <div class="container" style="margin-top: 40px; text-align: center;">{% block content %}{% endblock %}</div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Interest #2</h2>
+    <div class="imageText2">
+      <p>[PLACEHOLDER]</p>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Interest #3</h2>
+    <div class="imageText2">
+      <p>[PLACEHOLDER]</p>
+    </div>
+  </div>
+  <footer>
+    <a href="javascript:window.history.back();"><img src="{% static 'images/arrowback.svg' %}" alt="Image 1" class="svg"></a>
+    <a href="#"><img src="{% static 'images/bolt.svg' %}" alt="Image 2" class="svg"></a>
+    <a href="javascript:window.history.forward();"><img src="{% static 'images/arrowforward.svg' %}" alt="Image 3" class="svg"></a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
