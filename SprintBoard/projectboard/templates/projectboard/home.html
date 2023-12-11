@@ -16,7 +16,7 @@
                     <h6>{{ issue.description }}</h6>
                     <h6>Project: {{issue.project_number}}</h6>
                     <h6>Status: {{issue.issue_status}}</h6>
-                    <h6>Since: {{ issue.pub_date }}</h6>
+                    <h6>Since: {{issue.pub_date|date}} at {{issue.pub_date|time:"H:i" }}</h6>
                 </div>
             {% endfor %}
         </ul>
