@@ -3,9 +3,11 @@ from projectboard import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path("", views.projectboard, name="ProjectBoard"),
-    path('create/', views.projectdetail, name='ProjectDetail'),
-    path('create/<projectname>/', views.projectcreate, name='ProjectCreate'),
+    path("", views.home, name="Home"),
+    path('account/', views.account, name='Account'),
+    path('projects/', views.projects, name='Projects'),
+    path('create/', views.create, name='CreateProject'),
+    path('create/<projectname>/', views.createproject, name='CreateProject'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
