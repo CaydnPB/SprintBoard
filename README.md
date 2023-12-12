@@ -19,8 +19,8 @@
   <li>Ensure that your terminal is scoped to the <code>SprintBoard</code> folder: <code>cd SprintBoard</code></li>
   <li><code>python3 manage.py createsuperuser</code></li>
   <li>Create admin credentials</li>
-  <li><code>python3 manage.py migrate</code></li>
   <li><code>python3 manage.py makemigrations</code></li>
+  <li><code>python3 manage.py migrate</code></li>
   <li><code>python3 manage.py runserver</code></li>
   <li>Open the <code>localhost</code> link provided in the terminal</li>
 </ol>
@@ -52,7 +52,6 @@
       </ul>
   </ul>
 </p>
-
 <div align="center">
   <img src="./img/gradient.svg" alt="A gradient separator used to distinguish sections of the page" draggable="false"
     style="max-width: 100%;" title="Gradient Separator">
