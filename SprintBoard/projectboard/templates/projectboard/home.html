@@ -6,11 +6,15 @@
 {% block currentLink2 %}currentLink{% endblock %}
 {% block currentLink3 %}{% endblock %}
 {% block content %}
-    {% if issues %}
-        <ul style="
+<div class="card">
+    <div class="cardtext">
+        <div class="container" style="margin-top: 40px; text-align: center;">
+            <h2>Recent Issues</h2>
+            {% if issues %}
+            <ul style="
         padding-left: 0px;
         ">
-            {% for issue in issues %}
+                {% for issue in issues %}
                 <div class="issuecard">
                     <h5>{{ issue.title }}</h5>
                     <h6>{{ issue.description }}</h6>
@@ -18,9 +22,12 @@
                     <h6>Status: {{issue.issue_status}}</h6>
                     <h6>Since: {{issue.pub_date|date}} at {{issue.pub_date|time:"H:i" }}</h6>
                 </div>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No issues available.</p>
-    {% endif %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No issues available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
