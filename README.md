@@ -15,8 +15,27 @@
 </div>
 <br>
 <ol>
-  <li><em><strong>TBC</strong></em></li>
+  <li>Ensure that <code>python3</code>, <code>pip3</code> and <code>django</code> are installed</li>
+  <li>Ensure that your terminal is scoped to the <code>SprintBoard</code> folder: <code>cd SprintBoard</code></li>
+  <li><code>python3 manage.py createsuperuser</code></li>
+  <li>Create admin credentials</li>
+  <li><code>python3 manage.py migrate</code></li>
+  <li><code>python3 manage.py makemigrations</code></li>
+  <li><code>python3 manage.py runserver</code></li>
+  <li>Open the <code>localhost</code> link provided in the terminal</li>
 </ol>
+<div align="center">
+  <h2>Deployment Links</h2>
+  <img src="./img/gradient.svg" alt="A gradient separator used to distinguish sections of the page" draggable="false"
+    style="max-width: 100%;" title="Gradient Separator">
+</div>
+<br>
+<div align="center">
+
+| Developer  | Link |
+| :---: | :---: |
+| [Caydn](https://github.com/CaydnPB) | [https://example.com/](https://example.com/) |
+</div>
 <div align="center">
   <h2>Project Folders</h2>
   <img src="./img/gradient.svg" alt="A gradient separator used to distinguish sections of the page" draggable="false"
