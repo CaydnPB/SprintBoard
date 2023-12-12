@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import ProjectBoardIssue
+from .models import SprintBoardIssue, SprintBoardProject
 
-admin.site.register(ProjectBoardIssue)
+admin.site.register(SprintBoardIssue)
+admin.site.register(SprintBoardProject)

@@ -1,6 +1,6 @@
 from django.db import models
 
-class ProjectBoardIssue(models.Model):
+class SprintBoardIssue(models.Model):
     all_projects = [
         ('Project 1', 'Project 1'),
         ('Project 2', 'Project 2'),
@@ -25,3 +25,14 @@ class ProjectBoardIssue(models.Model):
     class Meta:
         verbose_name = 'SprintBoard Issue'
         verbose_name_plural = 'SprintBoard Issues'
+
+class SprintBoardProject(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'SprintBoard Project'
+        verbose_name_plural = 'SprintBoad Projects'

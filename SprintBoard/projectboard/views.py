@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import ProjectBoardIssue
+from .models import SprintBoardIssue
 
 def home(request):
-    issues = ProjectBoardIssue.objects.all()
+    issues = SprintBoardIssue.objects.all()
     return render(request, "projectboard/home.html", {'issues': issues})
 
 def account(request):
