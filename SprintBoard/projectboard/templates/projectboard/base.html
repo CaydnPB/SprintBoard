@@ -124,6 +124,19 @@
       --bs-card-border-color: none;
     }
 
+    .flexsides {
+      display: flex;
+      justify-content: space-between;
+      align-items: top;
+      width: 100%;
+    }
+
+    .flexsides > div {
+      flex: 1;
+      margin: 0 25px;
+      max-width: calc(50% - 25px);
+    }
+
     .currentLink {
       font-weight: normal;
     }

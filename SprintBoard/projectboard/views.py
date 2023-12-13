@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import SprintBoardIssue
+from .models import SprintBoardIssue, SprintBoardProject
 
 def home(request):
     issues = SprintBoardIssue.objects.all()
-    return render(request, "projectboard/home.html", {'issues': issues})
+    projects = SprintBoardProject.objects.all()
+    return render(request, "projectboard/home.html", {'issues': issues, 'projects': projects})
 
 def account(request):
     return render(request, 'projectboard/account.html')
