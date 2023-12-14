@@ -23,7 +23,7 @@ def createproject(request, projectname):
     }
     return render(request, 'projectboard/createproject.html', context)
 
-def create_issue(request):
+def createissue(request):
     if request.method == 'POST':
         form = SprintBoardIssueForm(request.POST)
         if form.is_valid():
@@ -31,9 +31,9 @@ def create_issue(request):
             return redirect('/')
     else:
         form = SprintBoardIssueForm()
-    return render(request, 'projectboard/create_issue.html', {'form': form})
+    return render(request, 'projectboard/createissue.html', {'form': form})
 
-def update_issue(request, issue_id):
+def updateissue(request, issue_id):
     issue = get_object_or_404(SprintBoardIssue, pk=issue_id)
     if request.method == 'POST':
         form = SprintBoardIssueForm(request.POST, instance=issue)
@@ -42,11 +42,11 @@ def update_issue(request, issue_id):
             return redirect('/')
     else:
         form = SprintBoardIssueForm(instance=issue)
-    return render(request, 'projectboard/update_issue.html', {'form': form, 'issue': issue})
+    return render(request, 'projectboard/updateissue.html', {'form': form, 'issue': issue})
 
-def delete_issue(request, issue_id):
+def deleteissue(request, issue_id):
     issue = get_object_or_404(SprintBoardIssue, pk=issue_id)
     if request.method == 'POST':
         issue.delete()
         return redirect('/')
-    return render(request, 'projectboard/delete_issue.html', {'issue': issue})
+    return render(request, 'projectboard/deleteissue.html', {'issue': issue})
