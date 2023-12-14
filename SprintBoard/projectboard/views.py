@@ -1,6 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import SprintBoardIssue, SprintBoardProject
+from .forms import SprintBoardIssueForm, SprintBoardProjectForm
 
 def home(request):
     issues = SprintBoardIssue.objects.all()
@@ -21,3 +22,31 @@ def createproject(request, projectname):
         'projectname': projectname,
     }
     return render(request, 'projectboard/createproject.html', context)
+
+def create_issue(request):
+    if request.method == 'POST':
+        form = SprintBoardIssueForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = SprintBoardIssueForm()
+    return render(request, 'projectboard/create_issue.html', {'form': form})
+
+def update_issue(request, issue_id):
+    issue = get_object_or_404(SprintBoardIssue, pk=issue_id)
+    if request.method == 'POST':
+        form = SprintBoardIssueForm(request.POST, instance=issue)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = SprintBoardIssueForm(instance=issue)
+    return render(request, 'projectboard/update_issue.html', {'form': form, 'issue': issue})
+
+def delete_issue(request, issue_id):
+    issue = get_object_or_404(SprintBoardIssue, pk=issue_id)
+    if request.method == 'POST':
+        issue.delete()
+        return redirect('/')
+    return render(request, 'projectboard/delete_issue.html', {'issue': issue})

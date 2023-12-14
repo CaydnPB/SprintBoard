@@ -1,4 +1,5 @@
 {% extends "projectboard/base.html" %}
+{% load static %}
 {% block title %} Home {% endblock %}
 {% block heading %} SprintBoard {% endblock %}
 {% block welcome %} Welcome to SprintBoard! {% endblock %}
@@ -31,6 +32,8 @@
             <div>
                 <h2>Recent Issues</h2>
                 <p></p>
+                <a href="{% url 'create_issue' %}"><img src="{% static 'images/update.svg' %}" alt="Create Issue" class="svg"></a>
+                <p></p>
                 {% if issues %}
                 <ul style="
                     padding-left: 0px;
@@ -42,6 +45,8 @@
                         <h6>Project: {{issue.project_number}}</h6>
                         <h6>Current Status: {{issue.issue_status}}</h6>
                         <h6>Last Updated: {{issue.creation_time|date}} at {{issue.creation_time|time:"H:i" }}</h6>
+                        <a href="{% url 'update_issue' issue.id %}"><img src="{% static 'images/edit.svg' %}" alt="Edit Issue" class="svg"></a>
+                        <a href="{% url 'delete_issue' issue.id %}"><img src="{% static 'images/delete.svg' %}" alt="Delete Issue" class="svg"></a>
                     </div>
                     {% endfor %}
                 </ul>

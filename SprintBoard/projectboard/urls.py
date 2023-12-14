@@ -12,6 +12,9 @@ urlpatterns = [
     path('create/', views.create, name='CreateProject'),
     path('create/<projectname>', views.createproject, name='CreateProject'),
     # path('<path:unknown_path>', RedirectView.as_view(url='/', permanent=False), name='catch-all'),
+    path('create_issue/', views.create_issue, name='create_issue'),
+    path('update_issue/<int:issue_id>/', views.update_issue, name='update_issue'),
+    path('delete_issue/<int:issue_id>/', views.delete_issue, name='delete_issue'),
     re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='catch-all'),
 ]
 
