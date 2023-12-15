@@ -8,13 +8,15 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path("", views.home, name="Home"),
     path('account/', views.account, name='Account'),
-    path('projects/', views.projects, name='Projects'),
+    # path('projects/', views.projects, name='Projects'),
     path('createproject/', views.createproject, name='createproject'),
     path('updateproject/<int:project_id>/', views.updateproject, name='updateproject'),
     path('deleteproject/<int:project_id>/', views.deleteproject, name='deleteproject'),
     path('createissue/', views.createissue, name='createissue'),
     path('updateissue/<int:issue_id>/', views.updateissue, name='updateissue'),
     path('deleteissue/<int:issue_id>/', views.deleteissue, name='deleteissue'),
+    path('projects/', views.projects, name='projects'),
+    path('projects/<int:project_id>/', views.projectsdetail, name='projectsdetail'),
     re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='catchall'),
 ]
 

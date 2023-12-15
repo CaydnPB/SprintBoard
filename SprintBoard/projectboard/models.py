@@ -2,12 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 class SprintBoardIssue(models.Model):
-    all_projects = [
-        ('Project 1', 'Project 1'),
-        ('Project 2', 'Project 2'),
-        ('Project 3', 'Project 3'),
-    ]
-
     all_statuses = [
         ('❌ Not Started ❌', '❌ Not Started ❌'),
         ('⏳ In Progress ⌛️', '⏳ In Progress ⌛️'),

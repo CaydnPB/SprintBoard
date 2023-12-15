@@ -13,6 +13,8 @@
             <div>
                 <h2>Recent Projects</h2>
                 <p></p>
+                <a href="{% url 'createproject' %}"><img src="{% static 'images/update.svg' %}" alt="Create Project" class="svg" title="Create Project"></a>
+                <p></p>
                 {% if projects %}
                 <ul style="
                     padding-left: 0px;
@@ -22,6 +24,8 @@
                         <h5>{{ project.title }}</h5>
                         <h6>{{ project.description }}</h6>
                         <h6>Last Updated: {{project.creation_time|date}} at {{project.creation_time|time:"H:i" }}</h6>
+                        <a href="{% url 'updateproject' project.id %}"><img src="{% static 'images/edit.svg' %}" alt="Edit Project" class="svg" title="Edit Project"></a>
+                        <a href="{% url 'deleteproject' project.id %}"><img src="{% static 'images/delete.svg' %}" alt="Delete Project" class="svg" title="Delete Project"></a>
                     </div>
                     {% endfor %}
                 </ul>

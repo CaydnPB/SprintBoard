@@ -69,3 +69,16 @@ def deleteissue(request, issue_id):
         issue.delete()
         return redirect('/')
     return render(request, 'projectboard/deleteissue.html', {'issue': issue})
+
+def projects(request):
+    projects = SprintBoardProject.objects.all()
+    return render(request, 'projectboard/projects.html', {'projects': projects})
+
+def projectsdetail(request, project_id):
+    project = get_object_or_404(SprintBoardProject, pk=project_id)
+    issues_by_status = {
+        'not_started': SprintBoardIssue.objects.filter(project_number=project, issue_status='❌ Not Started ❌'),
+        'in_progress': SprintBoardIssue.objects.filter(project_number=project, issue_status='⏳ In Progress ⌛️'),
+        'complete': SprintBoardIssue.objects.filter(project_number=project, issue_status='✅ Complete ✅'),
+    }
+    return render(request, 'projectboard/projectsdetail.html', {'project': project, 'issues_by_status': issues_by_status})

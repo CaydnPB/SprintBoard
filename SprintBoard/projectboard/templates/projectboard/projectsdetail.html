@@ -1,0 +1,51 @@
+{% extends "projectboard/base.html" %}
+{% load static %}
+{% block title %}Project Details{% endblock %}
+{% block heading %}Project Details{% endblock %}
+{% block welcome %} View Project Details! {% endblock %}
+{% block currentLink1 %}{% endblock %}
+{% block currentLink2 %}{% endblock %}
+{% block currentLink3 %}currentLink{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="cardtext">
+        <div class="container" style="margin-top: 40px; text-align: center;">
+            <h2>Project Details</h2>
+            <p></p>
+            <br>
+            <div class="status-column">
+                <h3>❌ Not Started ❌</h3>
+                <ul style="
+                padding-left: 0px;
+                ">
+                    {% for issue in issues_by_status.not_started %}
+                        <div>{{ issue.title }}</div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="status-column">
+                <h3>⏳ In Progress ⌛️</h3>
+                <ul style="
+                padding-left: 0px;
+                ">
+                    {% for issue in issues_by_status.in_progress %}
+                        <div>{{ issue.title }}</div>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="status-column">
+                <h3>✅ Complete ✅</h3>
+                <ul style="
+                padding-left: 0px;
+                ">
+                    {% for issue in issues_by_status.complete %}
+                        <div>{{ issue.title }}</div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<h2>Issues</h2>
+

@@ -1,7 +1,8 @@
 {% extends "projectboard/base.html" %}
-{% block title %} Project Creation {% endblock %}
-{% block heading %} Project Creation {% endblock %}
-{% block welcome %} Welcome to SprintBoard! {% endblock %}
+{% load static %}
+{% block title %}Projects View{% endblock %}
+{% block heading %}Projects View{% endblock %}
+{% block welcome %} View All Projects! {% endblock %}
 {% block currentLink1 %}{% endblock %}
 {% block currentLink2 %}{% endblock %}
 {% block currentLink3 %}currentLink{% endblock %}
@@ -9,10 +10,24 @@
 <div class="card">
     <div class="cardtext">
         <div class="container" style="margin-top: 40px; text-align: center;">
-            <h2>Project Creation</h2>
+            <h2>All Projects</h2>
             <p></p>
             <p>These are all of the projects which currently exist.</p>
-            <p>Click <a href="/create">here</a> to create a new project.</p>
+            <p>Click <a href="/createproject/">here</a> to create a new project.</p>
+            {% if projects %}
+            <ul style="
+                    padding-left: 0px;
+                    ">
+                {% for project in projects %}
+                <div class="issuecard">
+                    <a href="{% url 'projectsdetail' project.id %}">{{ project.title }}</a></li>
+                </div>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No SprintBoard Projects available.</p>
+            {% endif %}
+            </ul>
         </div>
     </div>
 </div>
