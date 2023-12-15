@@ -1,20 +1,20 @@
 {% extends "projectboard/base.html" %}
 {% load static %}
 {% block title %}
-{% if issue %}
-Update Issue: {{ issue }}
+{% if project %}
+Update Project: {{ project }}
 {% else %}
-Update Issue
+Update Project
 {% endif %}
 {% endblock %}
 {% block heading %}
-{% if issue %}
-Update Issue: {{ issue }}
+{% if project %}
+Update Project: {{ project }}
 {% else %}
-Update Issue
+Update Project
 {% endif %}
 {% endblock %}
-{% block welcome %} Update an Issue! {% endblock %}
+{% block welcome %} Update a Project! {% endblock %}
 {% block currentLink1 %}{% endblock %}
 {% block currentLink2 %}{% endblock %}
 {% block currentLink3 %}currentLink{% endblock %}
@@ -22,16 +22,16 @@ Update Issue
 <div class="card">
   <div class="cardtext">
       <div class="container" style="margin-top: 40px; text-align: center;">
-          <h2> {% if issue %}
-              Update Issue: {{ issue }}
+          <h2> {% if project %}
+              Update Project: {{ project }}
               {% else %}
-              Update Issue
+              Update Project
               {% endif %}</h2>
           <p></p>
           <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary" style="background-color: white; border-color: transparent; color: #808080;">Update Issue</button>
+            <button type="submit" class="btn btn-primary" style="background-color: white; border-color: transparent; color: #808080;">Update Project</button>
           </form>
       </div>
   </div>

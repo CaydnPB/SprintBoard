@@ -9,13 +9,13 @@ urlpatterns = [
     path("", views.home, name="Home"),
     path('account/', views.account, name='Account'),
     path('projects/', views.projects, name='Projects'),
-    path('create/', views.create, name='CreateProject'),
-    path('create/<projectname>', views.createproject, name='CreateProject'),
-    # path('<path:unknown_path>', RedirectView.as_view(url='/', permanent=False), name='catch-all'),
+    path('createproject/', views.createproject, name='createproject'),
+    path('updateproject/<int:project_id>/', views.updateproject, name='updateproject'),
+    path('deleteproject/<int:project_id>/', views.deleteproject, name='deleteproject'),
     path('createissue/', views.createissue, name='createissue'),
     path('updateissue/<int:issue_id>/', views.updateissue, name='updateissue'),
     path('deleteissue/<int:issue_id>/', views.deleteissue, name='deleteissue'),
-    re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='catch-all'),
+    re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='catchall'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

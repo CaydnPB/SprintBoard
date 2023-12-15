@@ -14,14 +14,33 @@ def account(request):
 def projects(request):
     return render(request, 'projectboard/projects.html')
 
-def create(request):
-    return render(request, 'projectboard/createproject.html')
+def createproject(request):
+    if request.method == 'POST':
+        form = SprintBoardProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = SprintBoardProjectForm()
+    return render(request, 'projectboard/createproject.html', {'form': form})
 
-def createproject(request, projectname):
-    context = {
-        'projectname': projectname,
-    }
-    return render(request, 'projectboard/createproject.html', context)
+def updateproject(request, project_id):
+    project = get_object_or_404(SprintBoardProject, pk=project_id)
+    if request.method == 'POST':
+        form = SprintBoardProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form = SprintBoardProjectForm(instance=project)
+    return render(request, 'projectboard/updateproject.html', {'form': form, 'project': project})
+
+def deleteproject(request, project_id):
+    project = get_object_or_404(SprintBoardProject, pk=project_id)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('/')
+    return render(request, 'projectboard/deleteproject.html', {'project': project})
 
 def createissue(request):
     if request.method == 'POST':

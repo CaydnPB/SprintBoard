@@ -1,17 +1,10 @@
 {% extends "projectboard/base.html" %}
+{% load static %}
 {% block title %}
-{% if projectname %}
-Create Project: {{ projectname }}
-{% else %}
 Create Project
-{% endif %}
 {% endblock %}
 {% block heading %}
-{% if projectname %}
-Create Project: {{ projectname }}
-{% else %}
 Create Project
-{% endif %}
 {% endblock %}
 {% block welcome %} Create a Project! {% endblock %}
 {% block currentLink1 %}{% endblock %}
@@ -19,16 +12,16 @@ Create Project
 {% block currentLink3 %}currentLink{% endblock %}
 {% block content %}
 <div class="card">
-    <div class="cardtext">
-        <div class="container" style="margin-top: 40px; text-align: center;">
-            <h2> {% if projectname %}
-                Create Project: {{ projectname }}
-                {% else %}
-                Create Project
-                {% endif %}</h2>
-            <p></p>
-            <p>You are creating a new project.</p>
-        </div>
-    </div>
+  <div class="cardtext">
+      <div class="container" style="margin-top: 40px; text-align: center;">
+          <h2>Create Project</h2>
+          <p></p>
+          <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary" style="background-color: white; border-color: transparent; color: #808080;">Create Project</button>
+          </form>
+      </div>
+  </div>
 </div>
 {% endblock %}
