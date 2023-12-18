@@ -13,39 +13,39 @@
             <h2>Project Details</h2>
             <p></p>
             <br>
-            <div class="status-column">
-                <h3>❌ Not Started ❌</h3>
-                <ul style="
-                padding-left: 0px;
-                ">
-                    {% for issue in issues_by_status.not_started %}
-                        <div>{{ issue.title }}</div>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="status-column">
-                <h3>⏳ In Progress ⌛️</h3>
-                <ul style="
-                padding-left: 0px;
-                ">
-                    {% for issue in issues_by_status.in_progress %}
-                        <div>{{ issue.title }}</div>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="status-column">
-                <h3>✅ Complete ✅</h3>
-                <ul style="
-                padding-left: 0px;
-                ">
-                    {% for issue in issues_by_status.complete %}
-                        <div>{{ issue.title }}</div>
-                    {% endfor %}
-                </ul>
+            <div class="flexsides" style="width: 80vw;">
+                <div class="status-column">
+                    <h3>❌ Not Started ❌</h3>
+                    <ul style="
+                    padding-left: 0px;
+                    ">
+                        {% for issue in issues_by_status.not_started %}
+                            <div>{{ issue.title }}</div>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="status-column">
+                    <h3>⏳ In Progress ⌛️</h3>
+                    <ul style="
+                    padding-left: 0px;
+                    ">
+                        {% for issue in issues_by_status.in_progress %}
+                            <div>{{ issue.title }}</div>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="status-column">
+                    <h3>✅ Complete ✅</h3>
+                    <ul style="
+                    padding-left: 0px;
+                    ">
+                        {% for issue in issues_by_status.complete %}
+                            <div>{{ issue.title }}</div>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
-<h2>Issues</h2>
-
