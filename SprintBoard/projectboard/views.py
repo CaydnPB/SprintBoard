@@ -1,11 +1,11 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import SprintBoardIssue, SprintBoardProject
 from .forms import SprintBoardIssueForm, SprintBoardProjectForm
 
 def home(request):
-    issues = SprintBoardIssue.objects.all()
-    projects = SprintBoardProject.objects.all()
+    projects = SprintBoardProject.objects.order_by('-creation_time')
+    issues = SprintBoardIssue.objects.order_by('-creation_time')
     return render(request, "projectboard/home.html", {'issues': issues, 'projects': projects})
 
 def account(request):
@@ -62,6 +62,13 @@ def updateissue(request, issue_id):
     else:
         form = SprintBoardIssueForm(instance=issue)
     return render(request, 'projectboard/updateissue.html', {'form': form, 'issue': issue})
+
+
+def updateissuestatus(request, issue_id, new_status):
+    issue = get_object_or_404(SprintBoardIssue, pk=issue_id)
+    issue.issue_status = new_status
+    issue.save()
+    return JsonResponse({'message': 'Issue status updated successfully'})
 
 def deleteissue(request, issue_id):
     issue = get_object_or_404(SprintBoardIssue, pk=issue_id)

@@ -10,7 +10,7 @@
 <div class="card">
     <div class="cardtext">
         <div class="container" style="margin-top: 40px; text-align: center;">
-            <h2>Project Details</h2>
+            <h2>Project Details for {{ project.title }}</h2>
             <p></p>
             <br>
             <div class="flexsides" style="width: 80vw;">
@@ -19,9 +19,21 @@
                     <ul style="
                     padding-left: 0px;
                     ">
+                    {% if issues_by_status.not_started %}
+                        <br>
                         {% for issue in issues_by_status.not_started %}
-                            <div>{{ issue.title }}</div>
+                            <div>
+                                <a href="{% url 'updateissue' issue.id %}"><h5>{{ issue.title }}</h5></a>
+                                <h6>{{ issue.description }}</h6>
+                                <h6>{{issue.creation_time|date}} at {{issue.creation_time|time:"H:i" }}</h6>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '❌ Not Started ❌')"><img src="{% static 'images/arrowback.svg' %}" alt="Back" class="svg" style="opacity: 50%;"></a>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '⏳ In Progress ⌛️')"><img src="{% static 'images/arrowforward.svg' %}" alt="Forward" class="svg" style="opacity: 100%;"></a>
+                            </div>
                         {% endfor %}
+                    {% else %}
+                        <br>
+                        <p style="opacity: 50%;">No not-started SprintBoard Issues.</p>
+                    {% endif %}
                     </ul>
                 </div>
                 <div class="status-column">
@@ -29,9 +41,21 @@
                     <ul style="
                     padding-left: 0px;
                     ">
+                    {% if issues_by_status.in_progress %}
+                        <br>
                         {% for issue in issues_by_status.in_progress %}
-                            <div>{{ issue.title }}</div>
+                            <div>
+                                <a href="{% url 'updateissue' issue.id %}"><h5>{{ issue.title }}</h5></a>
+                                <h6>{{ issue.description }}</h6>
+                                <h6>{{issue.creation_time|date}} at {{issue.creation_time|time:"H:i" }}</h6>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '❌ Not Started ❌')"><img src="{% static 'images/arrowback.svg' %}" alt="Back" class="svg" style="opacity: 100%;"></a>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '✅ Complete ✅')"><img src="{% static 'images/arrowforward.svg' %}" alt="Forward" class="svg" style="opacity: 100%;"></a>
+                            </div>
                         {% endfor %}
+                    {% else %}
+                        <br>
+                        <p style="opacity: 50%;">No in-progress SprintBoard Issues.</p>
+                    {% endif %}
                     </ul>
                 </div>
                 <div class="status-column">
@@ -39,13 +63,37 @@
                     <ul style="
                     padding-left: 0px;
                     ">
+                    {% if issues_by_status.complete %}
+                        <br>
                         {% for issue in issues_by_status.complete %}
-                            <div>{{ issue.title }}</div>
+                            <div>
+                                <a href="{% url 'updateissue' issue.id %}"><h5>{{ issue.title }}</h5></a>
+                                <h6>{{ issue.description }}</h6>
+                                <h6>{{issue.creation_time|date}} at {{issue.creation_time|time:"H:i" }}</h6>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '⏳ In Progress ⌛️')"><img src="{% static 'images/arrowback.svg' %}" alt="Back" class="svg" style="opacity: 100%;"></a>
+                                <a onclick="updateIssueStatus({{ issue.id }}, '✅ Complete ✅')"><img src="{% static 'images/arrowforward.svg' %}" alt="Forward" class="svg" style="opacity: 50%;"></a>
+                            </div>
                         {% endfor %}
+                    {% else %}
+                        <br>
+                        <p style="opacity: 50%;">No complete SprintBoard Issues.</p>
+                    {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function updateIssueStatus(issueId, newStatus) {
+      fetch(`/updateissuestatus/${issueId}/${newStatus}/`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.message === 'Issue status updated successfully') {
+            location.reload();
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
 {% endblock %}

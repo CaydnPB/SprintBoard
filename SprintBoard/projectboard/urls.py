@@ -15,6 +15,7 @@ urlpatterns = [
     path('createissue/', views.createissue, name='createissue'),
     path('updateissue/<int:issue_id>/', views.updateissue, name='updateissue'),
     path('deleteissue/<int:issue_id>/', views.deleteissue, name='deleteissue'),
+    path('updateissuestatus/<int:issue_id>/<str:new_status>/', views.updateissuestatus, name='updateissuestatus'),
     path('projects/', views.projects, name='projects'),
     path('projects/<int:project_id>/', views.projectsdetail, name='projectsdetail'),
     re_path(r'^.*$', RedirectView.as_view(url='/', permanent=False), name='catchall'),
