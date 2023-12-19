@@ -46,7 +46,7 @@
                     <div class="issuecard">
                         <a href="{% url 'projectsdetail' issue.project_number.id %}"><h5>{{ issue.title }}</h5></a>
                         <h6>{{ issue.description }}</h6>
-                        <a href="{% url 'projectsdetail' issue.project_number.id %}"><h6>Project: {{issue.project_number}}</h6></a>
+                        <a href="{% url 'projectsdetail' issue.project_number.id %}"><h6>{{issue.project_number}}</h6></a>
                         <h6>Current Status: {{issue.issue_status}}</h6>
                         <h6>Last Updated: {{issue.creation_time|date}} at {{issue.creation_time|time:"H:i" }}</h6>
                         <a href="{% url 'updateissue' issue.id %}"><img src="{% static 'images/edit.svg' %}" alt="Edit Issue" class="svg" title="Edit Issue"></a>
